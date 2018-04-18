@@ -57,7 +57,8 @@ class NodeInfo extends Component {
           </div>
           <div>
             <div className="remote-loading row-icon">
-              <i className="icon icon-energy" /> Connecting...
+              <i className="icon icon-energy" />{' '}
+              {i18n.t('mist.nodeInfo.connecting')}
             </div>
           </div>
         </div>
@@ -67,7 +68,9 @@ class NodeInfo extends Component {
         <div id="remote-stats" className="node-info__section">
           <div className="node-info__node-title orange">
             <strong>Remote</strong> Node
-            <span className="node-info__pill">active</span>
+            <span className="node-info__pill">
+              {i18n.t('mist.nodeInfo.active')}
+            </span>
           </div>
           <div className="block-number row-icon">
             <i className="icon icon-layers" /> {formattedBlockNumber}
@@ -94,7 +97,8 @@ class NodeInfo extends Component {
     return (
       <div>
         <div className="looking-for-peers row-icon">
-          <i className="icon icon-share" /> Looking for peers...
+          <i className="icon icon-share" />{' '}
+          {i18n.t('mist.nodeInfo.lookingForPeers')}
         </div>
       </div>
     );
@@ -104,10 +108,12 @@ class NodeInfo extends Component {
     return (
       <div>
         <div className="peer-count row-icon">
-          <i className="icon icon-users" /> {this.state.peerCount} peers
+          <i className="icon icon-users" />
+          {` ${this.state.peerCount} ${i18n.t('mist.nodeInfo.peers')}`}
         </div>
         <div className="sync-starting row-icon">
-          <i className="icon icon-energy" /> Sync starting...
+          <i className="icon icon-energy" />{' '}
+          {i18n.t('mist.nodeInfo.syncStarting')}
         </div>
       </div>
     );
@@ -133,10 +139,12 @@ class NodeInfo extends Component {
     return (
       <div>
         <div className="block-number row-icon">
-          <i className="icon icon-layers" /> {blocksBehind} blocks behind
+          <i className="icon icon-layers" />
+          {`${blocksBehind} ${i18n.t('mist.nodeInfo.blocksBehind')}`}
         </div>
         <div className="peer-count row-icon">
-          <i className="icon icon-users" /> {this.state.peerCount} peers
+          <i className="icon icon-users" />
+          {` ${this.state.peerCount} ${i18n.t('mist.nodeInfo.peers')}`}
         </div>
         <div className="sync-progress row-icon">
           <i className="icon icon-cloud-download" />
@@ -155,13 +163,20 @@ class NodeInfo extends Component {
 
     return (
       <div>
-        <div className="block-number row-icon">
+        <div
+          className="block-number row-icon"
+          title={i18n.t('mist.nodeInfo.blockNumber')}
+        >
           <i className="icon icon-layers" /> {formattedBlockNumber}
         </div>
         <div className="peer-count row-icon">
-          <i className="icon icon-users" /> {this.state.peerCount} peers
+          <i className="icon icon-users" />
+          {` ${this.state.peerCount} ${i18n.t('mist.nodeInfo.peers')}`}
         </div>
-        <div className="block-diff row-icon">
+        <div
+          className="block-diff row-icon"
+          title={i18n.t('mist.nodeInfo.timeSinceBlock')}
+        >
           <i className="icon icon-clock" /> {diff} seconds
         </div>
       </div>
@@ -247,7 +262,7 @@ class NodeInfo extends Component {
               <div className="node-info__section">
                 <div className="node-info__network-title">
                   {network}
-                  {network != 'main' && (
+                  {network !== 'main' && (
                     <span className="node-info__pill">test</span>
                   )}
                 </div>
